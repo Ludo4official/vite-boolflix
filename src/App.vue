@@ -41,9 +41,7 @@ export default {
           </div>
         </div>
         <div class="row">
-          <div class="col">
             <AppMain :filmList="films"></AppMain>
-          </div>
         </div>
         <div class="row">
           <div class="col">
@@ -55,10 +53,11 @@ export default {
 </template>
 
 <style lang="scss">
+
 @import './components/styles/partials/main.scss';
+
 .my-cnt {
   background-color: black;
-  height: 100vh;
 }
 
 </style>

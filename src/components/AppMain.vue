@@ -4,7 +4,6 @@ export default {
     name:'AppMain',
         data() {
             return {
-                films: []
             }
             
         },
@@ -23,12 +22,9 @@ export default {
 
 <template>
 
-    <div class="my-main mt-5">
-        <div class="cards d-flex flex-wrap">
-            <h4 v-for="filmList in films">{{ filmList.original_title }}</h4>
-            <AppCard></AppCard>
-        </div>
-    </div>
+<div v-for="film in filmList" class="col-2 mt-5" >
+    <AppCard :film="film"></AppCard>
+</div>
 
 </template>
 
