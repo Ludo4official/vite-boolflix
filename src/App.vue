@@ -16,9 +16,9 @@ export default {
 
   created() {
           axios
-            .get('https://api.themoviedb.org/3/search/movie?api_key=01bbd11fd4dcd85ddf948c39bbf9f20a&query=il')
+            .get('https://api.themoviedb.org/3/movie/popular?api_key=01bbd11fd4dcd85ddf948c39bbf9f20a&language=en-US')
             .then((response) => {
-                this.films = response.data.results
+                this.films = response.data.results.slice(0,12)
                 console.log(response.data.results)
             })
         },
@@ -58,6 +58,7 @@ export default {
 
 .my-cnt {
   background-color: black;
+  height: 100vh;
 }
 
 </style>

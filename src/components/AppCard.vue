@@ -34,8 +34,8 @@ export default {
 
 .flip-box {
   background-color: transparent;
-  width: 100%;
-  height: 200px;
+  width: 250px;
+  height: 300px;
 }
 .flip-box-inner {
   position: relative;
