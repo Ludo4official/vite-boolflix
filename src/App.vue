@@ -21,7 +21,7 @@ export default {
                 this.films = response.data.results.slice(0,12)
                 console.log(response.data.results)
             })
-        },
+  }, 
   
   components: {
     AppHeader,

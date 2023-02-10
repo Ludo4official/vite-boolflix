@@ -1,4 +1,6 @@
 <script>
+import { store } from '../components/store.js';
+import axios from 'axios';
 export default {
     name:'AppHeader',
     data() {
@@ -11,8 +13,26 @@ export default {
                 'Aggiunti di recente',
                 'La mia lista'
             ],
+
+            store
+
         }
+    },
+
+    methods: {
+        faiQualcosa() {
+            axios
+            .get('https://api.themoviedb.org/3/search/movie?api_key=01bbd11fd4dcd85ddf948c39bbf9f20a&query=' + this.store.nameValue)
+            .then((response) => {
+                this.store.films = response.data.results;
+                console.log(this.store.nameValue)
+            })
+        }
+    },
+    created() {
+        this.faiQualcosa();
     }
+
 }
 </script>
 
@@ -32,10 +52,10 @@ export default {
 
         <div class="user">
             <div class="searchBar">
-                <button class="my-btn">
+                <button @click="faiQualcosa()" class="my-btn">
                     Vai
                 </button>
-                <input class="my-search" type="text" name="" id="" placeholder="Cerca">
+                <input v-model="store.nameValue" class="my-search" type="text" name="" id="" placeholder="Cerca">
             </div>
         </div>
     </div>
