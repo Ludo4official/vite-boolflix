@@ -8,6 +8,27 @@ export default {
     },
     props: {
         film: Object
+    },
+    methods: {
+      getNewVote() {
+        let newVote = this.film.vote_average;
+        newVote = newVote / 2;
+        newVote = Math.ceil(newVote);
+        console.log(newVote);
+
+        return newVote;
+      },
+
+      countryFlag(lang) {
+
+        switch (lang) {
+          case 'en':
+            lang = 'uk';
+            break;
+        }
+        let flag = `https://www.worldometers.info//img/flags/small/tn_${lang}-flag.gif`;
+        return flag;
+      }
     }
 }
 </script>
@@ -20,10 +41,14 @@ export default {
                 <img class="img-fluid" :src=" `https://image.tmdb.org/t/p/w342${film.poster_path} `" alt="">
             </div>
             <div class="flip-box-back">
-                <h3>{{ film.original_title }}</h3>
-                <h5>{{ film.title }}</h5>
-                <h6>{{ film.vote_average }}</h6>
-                <h6>{{ film.original_language }}</h6>
+                <h5>{{ film.original_title }}</h5>
+                <h6>{{ film.title }}</h6>
+                <h6>
+                    <span v-for="n in getNewVote()">★</span>
+                    <span v-for="n in (5 - getNewVote())">☆</span>
+                </h6>
+                <img :src="countryFlag(film.original_language)" alt="">
+                <p>{{ film.overview }}</p>
             </div>
         </div>
     </div>
@@ -35,7 +60,7 @@ export default {
 .flip-box {
   background-color: transparent;
   width: 250px;
-  height: 300px;
+  height: 400px;
 }
 .flip-box-inner {
   position: relative;
@@ -44,6 +69,7 @@ export default {
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
+  
 }
 
 .flip-box:hover .flip-box-inner {

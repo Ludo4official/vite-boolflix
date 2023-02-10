@@ -58,7 +58,6 @@ export default {
 
 .my-cnt {
   background-color: black;
-  height: 100vh;
 }
 
 </style>
