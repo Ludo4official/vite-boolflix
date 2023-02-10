@@ -21,11 +21,14 @@ export default {
 
     methods: {
         faiQualcosa() {
+
+            const url = 'https://api.themoviedb.org/3/search/movie?api_key=01bbd11fd4dcd85ddf948c39bbf9f20a&query=' + this.store.nameValue;
+            console.log(url)
+
             axios
-            .get('https://api.themoviedb.org/3/search/movie?api_key=01bbd11fd4dcd85ddf948c39bbf9f20a&query=' + this.store.nameValue)
+            .get(url)
             .then((response) => {
                 this.store.films = response.data.results;
-                console.log(this.store.nameValue)
             })
         }
     },
@@ -52,7 +55,7 @@ export default {
 
         <div class="user">
             <div class="searchBar">
-                <button @click="faiQualcosa()" class="my-btn">
+                <button @click="$emit('searchFilm')" class="my-btn">
                     Vai
                 </button>
                 <input v-model="store.nameValue" class="my-search" type="text" name="" id="" placeholder="Cerca">

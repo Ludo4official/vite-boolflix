@@ -21,7 +21,13 @@ export default {
                 this.films = response.data.results.slice(0,12)
                 console.log(response.data.results)
             })
-  }, 
+  },
+
+  methods: {
+      reactToSearchFilm() {
+          
+      }
+  },
   
   components: {
     AppHeader,
@@ -37,7 +43,7 @@ export default {
     <div class="container text-light my-cnt">
         <div class="row">
           <div class="col">
-            <AppHeader></AppHeader>
+            <AppHeader @searchFilm="reactToSearchFilm"></AppHeader>
           </div>
         </div>
         <div class="row">

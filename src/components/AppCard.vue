@@ -6,9 +6,11 @@ export default {
             
         }
     },
+
     props: {
         film: Object
     },
+
     methods: {
       getNewVote() {
         let newVote = this.film.vote_average;
